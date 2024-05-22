@@ -58,4 +58,4 @@ jobs:
             echo "Docker container removed."
             docker run -d --name todo-ws -p 8083:8082 ${{ secrets.DOCKER_USERNAME }}/todo-ws:1.0
             echo "Docker container deployed successfully."
-            EOF
+          EOF

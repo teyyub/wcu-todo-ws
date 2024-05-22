@@ -47,7 +47,7 @@ jobs:
 
       - name: Deploy to server
         run: |
-          ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} << 'EOF'
+          ssh -tt -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} << 'EOF'
             docker pull ${{ secrets.DOCKER_USERNAME }}/todo-ws:1.0
             docker stop todo-ws || true
             docker rm todo-ws || true

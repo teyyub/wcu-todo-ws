@@ -45,17 +45,17 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/todo-ws:1.0
 
-      - name: Deploy to server
-        run: |
-          echo "Starting deployment..."
-          ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} << 'EOF'
-            echo "SSH connection established."
-            docker pull ${{ secrets.DOCKER_USERNAME }}/todo-ws:1.0
-            echo "Docker pull successful."
-            docker stop todo-ws || true
-            echo "Docker container stopped."
-            docker rm todo-ws || true
-            echo "Docker container removed."
-            docker run -d --name todo-ws -p 8083:8082 ${{ secrets.DOCKER_USERNAME }}/todo-ws:1.0
-            echo "Docker container deployed successfully."
-          EOF
+#      - name: Deploy to server
+#        run: |
+#          echo "Starting deployment..."
+#          ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} << 'EOF'
+#            echo "SSH connection established."
+#            docker pull ${{ secrets.DOCKER_USERNAME }}/todo-ws:1.0
+#            echo "Docker pull successful."
+#            docker stop todo-ws || true
+#            echo "Docker container stopped."
+#            docker rm todo-ws || true
+#            echo "Docker container removed."
+#            docker run -d --name todo-ws -p 8083:8082 ${{ secrets.DOCKER_USERNAME }}/todo-ws:1.0
+#            echo "Docker container deployed successfully."
+#          EOF

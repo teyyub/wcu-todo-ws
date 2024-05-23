@@ -69,7 +69,7 @@ public class TodoController {
         todo.setId(getRandom());
         todo.setCreatedAt(LocalDateTime.now());
         todos.add(todo);
-        return new ResponseEntity<>(todo,HttpStatus.OK);
+        return new ResponseEntity<>(todo,HttpStatus.CREATED);
     }
 
     @PutMapping("/todos/{id}")

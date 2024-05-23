@@ -15,6 +15,11 @@ public class Todo {
     private String note;
     private LocalDateTime createdAt;
 
+    public Todo(String description, String note) {
+        this.description = description;
+        this.note = note;
+    }
+
     @Override
     public String toString() {
         return "Todo{" +

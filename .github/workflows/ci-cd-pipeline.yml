@@ -14,7 +14,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Set up JDK 17
         uses: actions/setup-java@v3
@@ -26,10 +26,10 @@ jobs:
         run: mvn clean package -DskipTests
 
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v2
+        uses: docker/setup-buildx-action@v3
 
       - name: Login to Docker Hub
-        uses: docker/login-action@v2
+        uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
@@ -56,6 +56,7 @@ jobs:
             echo "Docker container stopped."
             docker rm todo-ws || true
             echo "Docker container removed."
-            docker run -d --name todo-ws -p 8083:8082 ${{ secrets.DOCKER_USERNAME }}/todo-ws:1.0
+            docker-compose up -d
+#            docker run -d --name todo-ws -p 8083:8082 ${{ secrets.DOCKER_USERNAME }}/todo-ws:1.0
             echo "Docker container deployed successfully."
           EOF

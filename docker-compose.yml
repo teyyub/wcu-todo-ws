@@ -5,3 +5,24 @@ services:
     build: .
     ports:
       - "8083:8082"
+    container_name: wcu-todo-ws-todo-app
+    depends_on:
+      - postgres-wcu
+
+  postgres-wcu:
+    build:
+      context: ./postgres
+    ports:
+      - "5499:5432"
+    container_name: wcu-todo-ws-postgres-wcu
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
+
+  postgres-wcu-test:
+    build:
+      context: ./postgres
+    ports:
+      - "5488:5432"
+    container_name: wcu-todo-ws-postgres-wcu-test
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data

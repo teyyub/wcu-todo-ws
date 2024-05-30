@@ -56,6 +56,6 @@ jobs:
             echo "Docker container stopped."
             docker rm todo-ws || true
             echo "Docker container removed."
-            docker-compose -f docker-compose.yml up -d
+            docker-compose -f ../../docker-compose.yml up -d
             echo "Docker container deployed successfully."    
           EOF

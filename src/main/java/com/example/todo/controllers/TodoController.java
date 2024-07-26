@@ -13,6 +13,7 @@ import java.util.UUID;
 
 //http://localhost:8080/api/todos
 
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/api")
 public class TodoController {
@@ -36,6 +37,12 @@ public class TodoController {
         return new ResponseEntity<>("Deleted",HttpStatus.OK);
     }
 
+
+
+    @GetMapping("/todos/1")
+    public ResponseEntity<?> getAll1(){
+            return new ResponseEntity<>(todos,HttpStatus.OK);
+    }
 
 
     @GetMapping("/todos")
